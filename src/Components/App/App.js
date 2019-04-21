@@ -26,7 +26,7 @@ class App extends Component {
     return (
       <div className="App">
         <Header />
-        <Route path='/' render={() => <Entries 
+        <Route exact path='/' render={() => <Entries 
           mainEntries={this.state.mainEntries}
           populateEntries={this.populateEntries} />}
          />

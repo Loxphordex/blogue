@@ -18,11 +18,9 @@ export default class Entries extends React.Component {
 
     if (mainEntries.length > 0) {
       mainEntries.map(entry => {
-        for (let i = 0; i < mainEntries.length; i++) {
-          let { id, title, body, date_created } = entry
-          let tempObj =  { id, title, body, date_created } 
-          content.push(tempObj)
-        }
+        let { id, title, body, date_created } = entry
+        let tempObj =  { id, title, body, date_created } 
+        content.push(tempObj)
       })
     }
 
