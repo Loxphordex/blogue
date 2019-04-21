@@ -11,6 +11,16 @@ export default class Entries extends React.Component {
       })
   }
 
+  formatDate(dateString) {
+    const baseFormat = Moment(dateString, 'YYYY/MM/DD HH:mm', false).format('YYYY/MM/DD')
+
+    const year = baseFormat.slice(0, 4)
+    const month = baseFormat.slice(5, 7)
+    const day = baseFormat.slice(8, 10)
+
+    return `Created ${month} ${day}, ${year}`
+  }
+
   render() {
 
     let content = []
@@ -20,7 +30,7 @@ export default class Entries extends React.Component {
       mainEntries.map(entry => {
         let { id, title, body, date_created } = entry
         let tempObj =  { id, title, body, date_created } 
-        content.push(tempObj)
+        content.unshift(tempObj)
       })
     }
 
@@ -32,7 +42,7 @@ export default class Entries extends React.Component {
             <div key={element.id}>
               <h2>{element.title}</h2>
               <p>{element.body}</p>
-              <div>{Moment(`${element.date_created}`, 'YYYY/MM/DD HH:mm', false).format('YYYY/MM/DD')}</div>
+              <div className='entry-date'>{this.formatDate(`${element.date_created}`)}</div>
             </div>
           )
         })}
